@@ -9,9 +9,17 @@ class NewsView {
     const data = newsRaw.response.results;
 
     data.forEach((article) => {
+      const mainHeader = document.createElement("h2");
+      mainHeader.textContent = article.webTitle;
+
+      const subHeader = document.createElement("h3");
+      subHeader.textContent = article.sectionName;
+
       const newDiv = document.createElement("div");
-      newDiv.textContent = article.webTitle;
       newDiv.className = "news";
+      newDiv.appendChild(mainHeader);
+      newDiv.appendChild(subHeader);
+
       this.mainContainerEl.append(newDiv);
     });
   }
