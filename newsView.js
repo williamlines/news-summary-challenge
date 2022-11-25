@@ -1,11 +1,13 @@
 class NewsView {
-  constructor(model) {
+  constructor(model, client) {
     this.model = model;
+    this.client = client;
     this.mainContainerEl = document.querySelector("#main-container");
   }
 
   displayNews() {
     const newsRaw = this.model.getNews();
+    // console.log(newsRaw)
     const data = newsRaw.response.results;
     let i = 1;
     data.forEach((article) => {
@@ -64,6 +66,13 @@ class NewsView {
       this.mainContainerEl.append(accordItem);
       i++;
     });
+  }
+
+  async displayNewsFromApi() {
+    const data = await this.client.getNewsFromApi();
+    this.model.setNews(data);
+    // console.log(this.model.getNews())
+    this.displayNews();
   }
 }
 
