@@ -17,7 +17,7 @@ describe("The Notes View class", () => {
 
     view.displayNews()
 
-    const news = document.querySelectorAll("div.news")
-    expect(news.length).toEqual(10)
+    const news = document.querySelectorAll("div.accordion")
+    expect(news.length).toEqual(11)
   })
 })
